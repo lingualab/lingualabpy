@@ -1,0 +1,50 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "lingualabpy"
+authors = [
+    { name = "Christophe Bedetti", email = "christophe.bedetti@umontreal.ca" },
+]
+license = { file = "LICENSE" }
+description = "Tools and utilities from the LINGUA laboratory"
+readme = "README.md"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+requires-python = ">=3.8.1"
+dynamic = ["version"]
+
+dependencies = ["click", "pandas", "python-docx"]
+
+[project.optional-dependencies]
+tests = ["pytest", "pytest-cov"]
+docs = []
+lint = ["black"]
+feature = []
+dev = ["lingualabpy[tests, docs, lint, feature]"]
+
+[project.scripts]
+lingualabpy_docx2json = "lingualabpy.cli.docx2json:main"
+lingualabpy_jsons2csv = "lingualabpy.cli.jsons2csv:main"
+
+[project.urls]
+Documentation = "https://github.com/lingualab/lingualabpy"
+Source = "https://github.com/lingualab/lingualabpy"
+Tracker = "https://github.com/lingualab/lingualabpy/issues"
+
+[tool.flit.module]
+name = "lingualabpy"
