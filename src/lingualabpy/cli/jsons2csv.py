@@ -1,8 +1,8 @@
 import click
 import json
 
-from .. import default_config
-from ..utils.utils import merge_participants_to_df
+from lingualabpy import default_config, read_json
+from lingualabpy.tools import merge_participants_to_df
 
 
 @click.command()
@@ -18,7 +18,6 @@ def main(column, jsons, output):
     """ """
     data = []
     for path in jsons:
-        with open(path, "r") as file:
-            data.append(json.load(file))
+        data.append(read_json(path))
     df = merge_participants_to_df(data, participant_col=column)
     df.to_csv(output)

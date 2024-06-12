@@ -1,8 +1,7 @@
 import click
-import json
-from docx import Document
 
-from ..utils.utils import parse_waywithwords
+from lingualabpy import read_docx, write_json
+from lingualabpy.text import parse_waywithwords
 
 
 @click.command()
@@ -11,10 +10,9 @@ from ..utils.utils import parse_waywithwords
 @click.argument("output", nargs=1)
 def main(docx_path, output, origin):
     """Doc"""
-    document = Document(docx_path)
+    document = read_docx(docx_path)
 
     if origin == "waywithwords":
         data = parse_waywithwords(document)
 
-    with open(output, "w") as f:
-        json.dump(data, f)
+    write_json(data, output)
