@@ -8,8 +8,8 @@ __version__ = '0.0.1'
 
 default_config = {
     'participant_col': 'participant_id',
-    'participant_label': 'IV',
-    'clinician_label': 'IE',
+    'participant_label': 'IE',
+    'clinician_label': 'IV',
 }
 
 from lingualabpy.io import read_docx, read_json, read_textgrid, write_json
