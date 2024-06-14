@@ -4,7 +4,7 @@
 """lingualabpy"""
 from __future__ import annotations
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 default_config = {
     "participant_col": "participant_id",
@@ -12,4 +12,4 @@ default_config = {
     "clinician_label": "IV",
 }
 
-from lingualabpy.io import read_docx, read_json, read_textgrid, write_json
+from lingualabpy.io import read_audio, read_docx, read_json, write_json, read_textgrid
