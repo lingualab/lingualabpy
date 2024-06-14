@@ -1,7 +1,7 @@
 import click
 
 from lingualabpy import read_docx, write_json
-from lingualabpy.text import parse_waywithwords
+from lingualabpy.text.parser import parse_waywithwords
 
 
 @click.command()
