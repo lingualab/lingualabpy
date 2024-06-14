@@ -15,4 +15,7 @@ def main(docx_path, output, origin):
     if origin == "waywithwords":
         data = parse_waywithwords(document)
 
+    else:
+        raise ValueError(f"{origin} is not implemented")
+
     write_json(data, output)
