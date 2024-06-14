@@ -49,3 +49,6 @@ Tracker = 'https://github.com/lingualab/lingualabpy/issues'
 
 [tool.flit.module]
 name = 'lingualabpy'
+
+[tool.pytest.ini_options]
+addopts = "--cov=src --cov-report=html"
