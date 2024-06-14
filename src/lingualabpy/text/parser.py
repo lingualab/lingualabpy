@@ -4,10 +4,10 @@ from collections import defaultdict
 
 
 def parse_waywithwords(document: Document) -> dict:
-    ''''''
+    """"""
     waywithwords = {
-        'IV': 'interviewer',
-        'IE': 'interviewee',
+        "IV": "interviewer",
+        "IE": "interviewee",
     }
 
     results = defaultdict(list)
@@ -16,7 +16,7 @@ def parse_waywithwords(document: Document) -> dict:
         try:
             content = para.text.split()
             speaker = content[0]
-            transcription = ' '.join(content[1:])
+            transcription = " ".join(content[1:])
         except:
             speaker = None
 
@@ -26,10 +26,10 @@ def parse_waywithwords(document: Document) -> dict:
         ):
             results[waywithwords[speaker]].append(transcription)
 
-        elif re.findall(r'[0-9][0-9]:[0-5][0-9]:[0-5][0-9]', para.text):
-            results['time'].append(para.text)
+        elif re.findall(r"[0-9][0-9]:[0-5][0-9]:[0-5][0-9]", para.text):
+            results["time"].append(para.text)
 
         else:
-            results['remainder'].append(para.text)
+            results["remainder"].append(para.text)
 
     return results

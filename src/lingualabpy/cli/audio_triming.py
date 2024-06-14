@@ -15,11 +15,10 @@ from lingualabpy.text import text_triming
     default=default_config["clinician_label"],
     show_default=True,
 )
-@click.argument('audio', nargs=1, type=click.Path(exists=True))
-@click.argument('textgrid', nargs=1, type=click.Path(exists=True))
-@click.argument('output', nargs=1)
+@click.argument("audio", nargs=1, type=click.Path(exists=True))
+@click.argument("textgrid", nargs=1, type=click.Path(exists=True))
+@click.argument("output", nargs=1)
 def main(participant_label, clinician_label, audio, textgrid, output):
-    '''Doc'''
+    """Doc"""
     grid = read_textgrid(textgrid)
     intervals = text_triming(grid, participant_label, clinician_label)
-
