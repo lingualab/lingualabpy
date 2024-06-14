@@ -2,8 +2,8 @@ import click
 
 from lingualabpy import default_config, read_audio, read_textgrid
 from lingualabpy.audio.triming import extract_audio
-from lingualabpy.text.interval import intervals_masking
 from lingualabpy.text.textgrid import extract_intervals
+from lingualabpy.tools.interval import intervals_masking
 
 
 @click.command()

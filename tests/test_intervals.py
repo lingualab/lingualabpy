@@ -1,5 +1,5 @@
 from textgrids import Interval
-from lingualabpy.text.interval import intervals_masking
+from lingualabpy.tools.interval import intervals_masking
 
 
 def test_intervals_masking():
