@@ -23,9 +23,14 @@ from lingualabpy.tools.interval import intervals_masking
 def main(participant_label, clinician_label, textgrid, audiofile, output):
     """Doc"""
     grid = read_textgrid(textgrid)
-    participant_intervals, clinician_intervals = extract_intervals(
-        grid, [participant_label, clinician_label]
-    )
+
+    try:
+        participant_intervals, clinician_intervals = extract_intervals(
+            grid, [participant_label, clinician_label]
+        )
+    except Exception as e:
+        raise Exception(f"Failed to extract intervals for {textgrid}", repr(e))
+
     participant_intervals_clean = intervals_masking(
         participant_intervals, clinician_intervals
     )
