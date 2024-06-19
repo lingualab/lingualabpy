@@ -2,7 +2,7 @@ import click
 import json
 
 from lingualabpy import default_config, read_json
-from lingualabpy.tools import merge_participants_to_df
+from lingualabpy.tools.data import merge_participants_to_df
 
 
 @click.command()

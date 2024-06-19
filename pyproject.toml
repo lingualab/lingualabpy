@@ -31,11 +31,11 @@ dynamic = ['version']
 dependencies = ['click', 'pandas', 'praat-parselmouth', 'praat-textgrids', 'pydub', 'python-docx']
 
 [project.optional-dependencies]
-tests = ['pytest', 'pytest-cov']
-docs = []
+test = ['pytest', 'pytest-cov']
+doc = []
 lint = ['black']
 feature = []
-dev = ['lingualabpy[tests, docs, lint, feature]']
+dev = ['lingualabpy[test, doc, lint, feature]']
 
 [project.scripts]
 lingualabpy_audio_triming = 'lingualabpy.cli.audio_triming:main'

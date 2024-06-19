@@ -4,8 +4,11 @@ from lingualabpy import read_json
 from click.testing import CliRunner
 
 
-def test_docx2json(tmp_path, north_docx, north_json):
+def test_docx2json(tmp_path, resources):
     runner = CliRunner()
+    north_docx = resources.the_north("docx")
+    north_json = resources.the_north("json")
+
     with runner.isolated_filesystem(temp_dir=tmp_path):
         output = str(tmp_path / "output.json")
 

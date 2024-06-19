@@ -1,0 +1,100 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 36.44226757369614 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "IV" 
+        xmin = 0 
+        xmax = 36.44226757369614 
+        intervals: size = 11 
+        intervals [1]:
+            xmin = 0 
+            xmax = 4 
+            text = "" 
+        intervals [2]:
+            xmin = 4 
+            xmax = 5 
+            text = "IV " 
+        intervals [3]:
+            xmin = 5 
+            xmax = 10 
+            text = "" 
+        intervals [4]:
+            xmin = 10 
+            xmax = 12 
+            text = "IV\t" 
+        intervals [5]:
+            xmin = 12 
+            xmax = 18 
+            text = "" 
+        intervals [6]:
+            xmin = 18 
+            xmax = 19 
+            text = "IV" 
+        intervals [7]:
+            xmin = 19 
+            xmax = 22 
+            text = "" 
+        intervals [8]:
+            xmin = 22 
+            xmax = 28 
+            text = "IV" 
+        intervals [9]:
+            xmin = 28 
+            xmax = 33 
+            text = "" 
+        intervals [10]:
+            xmin = 33 
+            xmax = 36 
+            text = "IV" 
+        intervals [11]:
+            xmin = 36 
+            xmax = 36.44226757369614 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "IE" 
+        xmin = 0 
+        xmax = 36.44226757369614 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1 
+            text = "" 
+        intervals [2]:
+            xmin = 1 
+            xmax = 4 
+            text = "IE" 
+        intervals [3]:
+            xmin = 4 
+            xmax = 11 
+            text = "" 
+        intervals [4]:
+            xmin = 11 
+            xmax = 20 
+            text = "IE" 
+        intervals [5]:
+            xmin = 20 
+            xmax = 23 
+            text = "" 
+        intervals [6]:
+            xmin = 23 
+            xmax = 27 
+            text = "IE" 
+        intervals [7]:
+            xmin = 27 
+            xmax = 31 
+            text = "" 
+        intervals [8]:
+            xmin = 31 
+            xmax = 35 
+            text = "IE" 
+        intervals [9]:
+            xmin = 35 
+            xmax = 36 
+            text = "" 

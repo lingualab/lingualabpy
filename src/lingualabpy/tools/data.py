@@ -1,4 +1,4 @@
-import pandas as pd
+from pandas import DataFrame
 
 from typing import Any, Dict, List
 
@@ -6,7 +6,7 @@ from typing import Any, Dict, List
 def merge_participants_to_df(
     data_participants: List[Dict[Any, Any]],
     participant_col: str,
-) -> pd.DataFrame:
+) -> DataFrame:
     # Check if all data have a `participant_col` key
     participant_col_checks = [_.get(participant_col) for _ in data_participants]
     if not all(participant_col_checks):
@@ -15,7 +15,7 @@ def merge_participants_to_df(
         )
 
     # Check if there are no duplicates in the data
-    df_raw = pd.DataFrame.from_dict(data_participants)
+    df_raw = DataFrame.from_dict(data_participants)
     df_melt = df_raw.melt(id_vars=[participant_col]).dropna()
     df_for_test = df_melt.drop(columns="value")
     duplicates = df_for_test[df_for_test.duplicated()]

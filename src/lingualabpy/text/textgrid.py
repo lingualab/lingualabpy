@@ -1,11 +1,35 @@
+import re
 from textgrids import TextGrid, Interval
+import warnings
 
 
-def extract_intervals(grid: TextGrid, speakers: list[str]) -> tuple[list[Interval]]:
+def extract_intervals(textgrid: TextGrid, speakers: list[str]) -> list[list[Interval]]:
     """"""
+    # Check if speakers are in the textgrid tiers
+    tiers = set(textgrid.keys())
+    if not set(speakers).issubset(tiers):
+        raise ValueError(
+            f"Some speaker(s) '{speakers}' are not a tier in the TextGrid '{tiers}'"
+        )
+
+    # Check if there is other speaker in the textgrid
+    if not set(speakers) == tiers:
+        warnings.warn(
+            f"TextGrid '{tiers}' have more speakers than specify '{speakers}'"
+        )
+
+    # Extraction of intervals with text value
     speakers_intervals = []
     for speaker in speakers:
-        speakers_intervals.append([_ for _ in grid[speaker] if _.text])
+        speaker_intervals = []
+        for interval in textgrid[speaker]:
+            # Cleaning of the interval text
+            interval.text = (
+                interval.text.encode().decode("unicode_escape").strip(" \n\r\t")
+            )
+            if interval.text:
+                speaker_intervals.append(interval)
+        speakers_intervals.append(speaker_intervals)
 
     # Checking if all intervals are correctly labeled
     def interval_qc(intervals, label):
