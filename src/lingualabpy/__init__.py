@@ -10,6 +10,9 @@ default_config = {
     "participant_col": "participant_id",
     "participant_label": "IE",
     "clinician_label": "IV",
+    "f0min": 75.0,
+    "f0max": 300.0,
+    "unit_frequency": "Hertz",
 }
 
 from lingualabpy.io import read_audio, read_docx, read_json, write_json, read_textgrid

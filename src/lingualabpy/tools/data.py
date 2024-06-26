@@ -1,6 +1,18 @@
+from collections import UserDict
 from pandas import DataFrame
 
 from typing import Any, Dict, List
+
+
+class UnchangeableDict(UserDict):
+    """A dictionary in which you can add new keys but not modify them in the future."""
+
+    def __setitem__(self, key: Any, item: Any) -> None:
+        try:
+            self.__getitem__(key)
+            raise ValueError("duplicate key '{}' found".format(key))
+        except KeyError:
+            return super().__setitem__(key, item)
 
 
 def merge_participants_to_df(

@@ -38,6 +38,7 @@ feature = []
 dev = ['lingualabpy[test, doc, lint, feature]']
 
 [project.scripts]
+lingualabpy_audio_metrics = 'lingualabpy.cli.audio_metrics:main'
 lingualabpy_audio_triming = 'lingualabpy.cli.audio_triming:main'
 lingualabpy_docx2json = 'lingualabpy.cli.docx2json:main'
 lingualabpy_jsons2csv = 'lingualabpy.cli.jsons2csv:main'
