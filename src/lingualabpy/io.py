@@ -33,7 +33,7 @@ def read_json(json_path: str) -> Union[list, dict]:
 def write_json(data: Union[list, dict], json_path: str) -> None:
     """"""
     with open(json_path, "w") as file:
-        json.dump(data, file)
+        json.dump(data, file, indent=4)
 
 
 # .TextGrid files
