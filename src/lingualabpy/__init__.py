@@ -10,8 +10,10 @@ default_config = {
     "participant_col": "participant_id",
     "participant_label": "IE",
     "clinician_label": "IV",
-    "f0min": 75.0,
-    "f0max": 300.0,
+    "f0_bounds": {
+        "female": [100.0, 600.0],
+        "male": [75.0, 300.0],
+    },
     "unit_frequency": "Hertz",
 }
 

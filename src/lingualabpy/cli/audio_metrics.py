@@ -8,14 +8,19 @@ from lingualabpy.audio.metrics import measure_pitch, measure_formants
 
 @click.command()
 @click.option(
+    "--sex",
+    type=click.Choice(["female", "male"]),
+    help=f"Set f0min and f0max for praat analysis. {default_config['f0_bounds']}",
+)
+@click.option(
     "--f0min",
-    default=default_config["f0min"],
-    show_default=True,
+    type=float,
+    help="Define f0min for praat analysis. Not required if sex is specify",
 )
 @click.option(
     "--f0max",
-    default=default_config["f0max"],
-    show_default=True,
+    type=float,
+    help="Define f0max for praat analysis. Not required if sex is specify",
 )
 @click.option(
     "--unit_frequency",
@@ -25,8 +30,16 @@ from lingualabpy.audio.metrics import measure_pitch, measure_formants
 @click.option("--participant_id", "-p", default=None, help="")
 @click.option("--output_json", default=None, help="")
 @click.argument("audiofile", nargs=1, type=click.Path(exists=True))
-def main(f0min, f0max, unit_frequency, participant_id, output_json, audiofile):
+def main(sex, f0min, f0max, unit_frequency, participant_id, output_json, audiofile):
     """Doc"""
+    if sex:
+        f0min, f0max = default_config["f0_bounds"][sex]
+    else:
+        if not f0min or not f0max:
+            raise click.UsageError(
+                "'--f0min' and '--f0max' are required if '--sex' is not specified"
+            )
+
     sound = Sound(audiofile)
     metrics = measure_pitch(sound, f0min, f0max, unit_frequency)
     metrics.update(measure_formants(sound, f0min, f0max, unit_frequency))
