@@ -48,10 +48,12 @@ def main(sex, f0min, f0max, unit_frequency, participant_id, output_json, audiofi
 
     if participant_id:
         metrics["participant_id"] = participant_id
-    else:
-        metrics["participant_id"] = audiofile_stem.split("_")[0]
+
+    audiofile = Path(audiofile)
+
+    metrics["filename"] = audiofile.name
 
     if not output_json:
-        output_json = audiofile_stem + "_metric-audio.json"
+        output_json = audiofile.stem + "_metric-audio.json"
 
     write_json(dict(metrics), output_json)
