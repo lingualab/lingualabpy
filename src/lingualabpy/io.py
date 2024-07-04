@@ -39,4 +39,11 @@ def write_json(data: Union[list, dict], json_path: str) -> None:
 # .TextGrid files
 def read_textgrid(textgrid_path: str) -> TextGrid:
     """"""
-    return TextGrid(textgrid_path)
+    textgrid = TextGrid(textgrid_path)
+    # Cleaning of the interval text
+    for intervals in textgrid.values():
+        for interval in intervals:
+            interval.text = (
+                interval.text.encode().decode("unicode_escape").strip(" \n\r\t")
+            )
+    return textgrid

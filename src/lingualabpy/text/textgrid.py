@@ -23,10 +23,6 @@ def extract_intervals(textgrid: TextGrid, speakers: list[str]) -> list[list[Inte
     for speaker in speakers:
         speaker_intervals = []
         for interval in textgrid[speaker]:
-            # Cleaning of the interval text
-            interval.text = (
-                interval.text.encode().decode("unicode_escape").strip(" \n\r\t")
-            )
             if interval.text:
                 speaker_intervals.append(interval)
         speakers_intervals.append(speaker_intervals)
