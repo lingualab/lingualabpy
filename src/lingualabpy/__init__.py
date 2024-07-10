@@ -4,7 +4,7 @@
 """lingualabpy"""
 from __future__ import annotations
 
-__version__ = "0.0.5"
+__version__ = "0.0.6"
 
 default_config = {
     "participant_col": "participant_id",
