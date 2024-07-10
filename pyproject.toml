@@ -28,7 +28,7 @@ classifiers = [
 requires-python = ">=3.8.1"
 dynamic = ["version"]
 
-dependencies = ["click", "pandas", "praat-parselmouth", "praat-textgrids", "pydub", "python-docx"]
+dependencies = ["click", "matplotlib", "opencv-python", "pandas", "praat-parselmouth", "praat-textgrids", "pydub", "python-docx"]
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov"]
@@ -42,6 +42,7 @@ lingualabpy_audio_metrics = "lingualabpy.cli.audio_metrics:main"
 lingualabpy_audio_triming = "lingualabpy.cli.audio_triming:main"
 lingualabpy_docx2json = "lingualabpy.cli.docx2json:main"
 lingualabpy_jsons2csv = "lingualabpy.cli.jsons2csv:main"
+lingualabpy_plot_sound = "lingualabpy.cli.plot_sound:main"
 
 [project.urls]
 Documentation = "https://github.com/lingualab/lingualabpy"
