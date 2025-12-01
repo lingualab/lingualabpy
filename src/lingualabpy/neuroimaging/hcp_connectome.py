@@ -30,35 +30,22 @@ class RestingState:
                 f"Invalid HCP-Young-Adult-2025 rs-fMRI path:\n  {path}\n"
                 "Expected: <participant_id>/MNINonLinear/Results/rfMRI_REST{1,2}_{LR,RL}/rfMRI_REST{1,2}_{LR,RL}_hp2000_clean_rclean_tclean.nii.gz"
             )
+        output = Path(output)
+
+        pid = f"sub-{hcp_match.group('participant_id')}"
+        run = f"run-{hcp_match.group('pe')}{hcp_match.group('run')}"
+        basename = f"{pid}_task-rest_{run}_seg-SENSAAS"
+
+        # HCP-Young-Adult-2025
         self.path = path
-        self.pid = f"sub-{hcp_match.group('participant_id')}"
-        self.run = f"run-{hcp_match.group('pe')}{hcp_match.group('run')}"
-        self.output = Path(output)
+        self.brainmask = path.parent / "brainmask_fs.2.nii.gz"
 
-    @property
-    def brainmask(self):
-        return self.path.parent / "brainmask_fs.2.nii.gz"
-
-    @property
-    def output_folder(self):
-        return self.output / self.pid / "func"
-
-    @property
-    def basename(self):
-        return f"{self.pid}_task-rest_{self.run}_seg-SENSAAS"
-
-    @property
-    def timeseries(self):
-        return self.output_folder / f"{self.basename}_timeseries.tsv"
-
-    @property
-    def report(self):
-        return self.output_folder / f"{self.basename}_report.html"
-
-    @property
-    def relmat(self):
-        return (
-            self.output_folder / f"{self.basename}_meas-PearsonCorrelation_relmat.tsv"
+        # Define output filenames
+        self.output_folder = output / pid / "func"
+        self.timeseries = self.output_folder / f"{basename}_timeseries.tsv"
+        self.report = self.output_folder / f"{basename}_report.html"
+        self.relmat = (
+            self.output_folder / f"{basename}_meas-PearsonCorrelation_relmat.tsv"
         )
 
     def make_output_folder(self):
