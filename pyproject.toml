@@ -37,6 +37,7 @@ dependencies = [
     "praat-textgrids",
     "pydub",
     "python-docx",
+    "nilearn==0.12.1"
 ]
 
 [project.optional-dependencies]
