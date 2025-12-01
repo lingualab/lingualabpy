@@ -1,6 +1,6 @@
 [build-system]
-requires = ["flit_core >=3.2,<4"]
-build-backend = "flit_core.buildapi"
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
 
 [project]
 name = "lingualabpy"
@@ -28,14 +28,20 @@ classifiers = [
 requires-python = ">=3.8.1"
 dynamic = ["version"]
 
-dependencies = ["click", "matplotlib", "opencv-python", "pandas", "praat-parselmouth", "praat-textgrids", "pydub", "python-docx"]
+dependencies = [
+    "click",
+    "matplotlib",
+    "opencv-python",
+    "pandas",
+    "praat-parselmouth",
+    "praat-textgrids",
+    "pydub",
+    "python-docx",
+]
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov"]
-doc = []
-lint = ["black"]
-feature = []
-dev = ["lingualabpy[test, doc, lint, feature]"]
+style = ["black", "ruff"]
 
 [project.scripts]
 lingualabpy_audio_metrics = "lingualabpy.cli.audio_metrics:main"
@@ -49,8 +55,22 @@ Documentation = "https://github.com/lingualab/lingualabpy"
 Source = "https://github.com/lingualab/lingualabpy"
 Tracker = "https://github.com/lingualab/lingualabpy/issues"
 
-[tool.flit.module]
-name = "lingualabpy"
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/lingualabpy/_version.py"
+
+[tool.hatch.build]
+packages = ["src/lingualabpy"]
 
 [tool.pytest.ini_options]
-addopts = "--cov=src --cov-report=html"
+testpaths = ["tests",]
+pythonpath = ["src",]
+addopts = """
+    --cov=src/speechmetryflow
+    --cov-report=html
+"""
+
+[tool.coverage.run]
+omit = ["*/_version.py"]
