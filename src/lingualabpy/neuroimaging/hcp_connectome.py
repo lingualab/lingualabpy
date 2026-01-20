@@ -87,10 +87,16 @@ class ConnectomeHcp2025(Connectome):
     default=5.0,
     help="full-width at half maximum in millimeters of the spatial smoothing to apply to the signal",
 )
+@click.option(
+    "--kind",
+    type=str,
+    default="correlation",
+    help="kind of functional connectivity matrices",
+)
 @click.argument("atlas_path", nargs=1, type=click.Path(exists=True))
 @click.argument("lut_path", nargs=1, type=click.Path(exists=True))
 @click.argument("rs_path", nargs=1, type=click.Path(exists=True))
-def main(atlas_path, lut_path, rs_path, output, smoothing_fwhm):
+def main(atlas_path, lut_path, rs_path, output, smoothing_fwhm, kind):
     """Process resting-state fMRI from the HCP-Young-Adult-2025 release to extract connectome.
 
     1. Validates input resting-state fMRI data structure
@@ -112,6 +118,8 @@ def main(atlas_path, lut_path, rs_path, output, smoothing_fwhm):
         output (str): Path to save results
 
         smoothing_fwhm (float): full-width at half maximum in millimeters of the spatial smoothing to apply to the signal
+
+        kind (str): kind of functional connectivity matrices
     """
     resting_state = ConnectomeHcp2025(path=Path(rs_path), output=Path(output))
 
@@ -125,7 +133,7 @@ def main(atlas_path, lut_path, rs_path, output, smoothing_fwhm):
     )
 
     correlation_measure = ConnectivityMeasure(
-        kind="correlation",
+        kind=kind,
         standardize=False,
         vectorize=False,
     )
