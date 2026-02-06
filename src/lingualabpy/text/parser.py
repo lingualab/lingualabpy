@@ -17,6 +17,11 @@ def parse_waywithwords(document: Document) -> dict:
             content = para.text.split()
             speaker = content[0]
             transcription = " ".join(content[1:])
+
+            # Since 2026, some transcripts have `PA` for the interviewee.
+            # This check has been added to ensure backward compatibility.
+            if speaker == "PA":
+                speaker = "IE"
         except:
             speaker = None
 
