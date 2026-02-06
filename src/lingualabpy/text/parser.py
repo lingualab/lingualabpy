@@ -8,6 +8,7 @@ def parse_waywithwords(document: Document) -> dict:
     waywithwords = {
         "IV": "interviewer",
         "IE": "interviewee",
+        "PA": "participant",
     }
 
     results = defaultdict(list)
